@@ -1,0 +1,10 @@
+1. Open Addressing:
+    -- Linear probing (if a collision occurs looks for next available slot with increment of 1)
+    -- plus 3 rehash (if a collision occurs looks for every third slot until a free slot is available)
+    -- Quadrating Probing (failed attempts) ^ 2 ( every time a failed attempt happens it squares and look for slot that is far from the index.
+        Lets say, 1st attempt - looks for very next slot from the index, 2nd attempt -look for 4 slots from the index and so on)
+    -- Double hashing (apply second hashing function to the key when there is a collilsion happens, the result of the second hash tells us
+        the distance from the initial index)
+
+2. Closed Addressing:
+    -- Chaining (each index is a linked list, whenever a collilsion occurs, it adds the item to that hash index as a linked list)

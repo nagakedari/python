@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<person>
+    <firstname>naga</firstname>
+    <lastname>kedari</lastname>
+    <home>dallas</home>
+    <skill name="javascript"/>
+    <skill name="java"/>
+    <skill name="nodejs"/>
+    <skill name="angular"/>
+    <skill name="aws"/>
+</person>
