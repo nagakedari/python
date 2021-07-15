@@ -4,14 +4,12 @@ class Heap:
     def insert(self, val):
         self.arr.append(val)
         current_heap_size = len(self.arr)
-        if current_heap_size > 1:
-            i = int(current_heap_size / 2)-1
-            while i >= 1:
-                self.max_hepify(self.arr, i, current_heap_size)
-                i-= 1
+        i = int((current_heap_size / 2)-1)
+        for i in range(current_heap_size, -1, -1):
+            self.max_hepify(self.arr,i,current_heap_size)
     def max_hepify(self, a, i , current_heap_size):
-        left = 2 * i 
-        right = 2 * i + 1
+        left = 2 * i  + 1
+        right = 2 * i + 2
         largest = i
 
         if left < current_heap_size and a[i] < a[left] :
@@ -21,17 +19,16 @@ class Heap:
             largest = right
 
         if largest != i:
-            self.swap(a, i, largest)
+            a[i], a[largest] = a[largest], a[i]
             self.max_hepify(a, largest, current_heap_size)
-
-    def swap (self, a, i, j):
-        temp = a[i]
-        a[i] = a[j]
-        a[j] = temp
 
     def print_heap(self):
         print(self.arr)
-
+    
+    def sort(self):
+        for i in range(len(self.arr)-1, 0, -1):
+            self.arr[i], self.arr[0] = self.arr[0], self.arr[i]
+            self.max_hepify(self.arr, 0, i-1)
 heap = Heap()
 heap.insert(10)
 heap.insert(30)
@@ -40,5 +37,9 @@ heap.insert(15)
 heap.insert(50)
 heap.insert(100)
 heap.insert(70)
+
+heap.print_heap()
+
+heap.sort()
 
 heap.print_heap()
