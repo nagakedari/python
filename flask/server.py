@@ -15,4 +15,4 @@ api = Api(app)
 
 
 if __name__ == '__main__':
-    app.run() # runs our Flask app
+    app.run(host='127.0.0.1', port="5555") # runs our Flask app
