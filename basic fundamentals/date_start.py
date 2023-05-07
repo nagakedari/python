@@ -38,13 +38,14 @@ def main() :
     print("In 2 days and 3 weeks, it will be: "+str(todayTime + timedelta(days=2, weeks=3)))
     print("one week ago it was " + (todayTime - timedelta(weeks=1)).strftime("%A %B %d, %Y"))
     afd = date(today.year, 4, 1)
+    print(afd)
     if afd < today :
         print("April fool's day already went by %d days ago "% ((today-afd).days))
         afd = afd.replace(year=today.year+1)
     time_to_afd = afd-today
     print("It's just ", time_to_afd.days, " days until April Fool's Day")
 
-    #calendars
+    # #calendars
 
     c= calendar.TextCalendar(calendar.SATURDAY)
     textStream = c.formatmonth(2020, 1, 0, 0)
@@ -54,7 +55,7 @@ def main() :
     ht = hc.formatmonth(2020, 1)
     print(ht)
 
-    #loop over the days of month
+    # #loop over the days of month
 
     for i in c.itermonthdays(2020, 6) :
         print(i)

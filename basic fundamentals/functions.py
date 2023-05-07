@@ -1,38 +1,55 @@
-#basic function
-def basicFunc():
-    print("I am a function")
+# #basic function
+# def basicFunc():
+#     print("I am a function")
 
-basicFunc()
-print(basicFunc())
-print(basicFunc)
+# basicFunc()
+# print(basicFunc())
+# print(basicFunc)
 
-# Function with argument
-def argumentsFunc(arg1, arg2):
-    print(arg1, " ", arg2)
+# # Function with argument
+# def argumentsFunc(arg1, arg2):
+#     print(arg1, " ", arg2)
 
-def cubeFunc(x):
-    return x*x*x
+# def cubeFunc(x):
+#     return x*x*x
 
-argumentsFunc(10, 20)
-print(argumentsFunc(10,20))
-print(cubeFunc(2))
+# argumentsFunc(10, 20)
+# print(argumentsFunc(10,20))
+# print(cubeFunc(2))
 
-#Default argument value
-def power (num, x=1):
-    result = 1
-    for i in range(x):
-        result = result*num
-    return result
+# #Default argument value
+# def power (num, x=1):
+#     result = 1
+#     for i in range(x):
+#         result = result*num
+#     return result
 
-print(power(2))
-print(power(2, 3))
-print(power(x=3, num=2))
+# print(power(2))
+# print(power(2, 3))
+# print(power(x=3, num=2))
 
-#function with variable number of arguments
-def multi_add(*args):
-    result = 0
-    for x in args:
-        result = result + x
-    return result
+# #function with variable number of arguments
+# def multi_add(*args):
+#     result = 0
+#     for x in args:
+#         result = result + x
+#     return result
 
-print(multi_add(8,4,5,8,5))
+# print(multi_add(8,4,5,8,5))
+
+# def test(a,b):
+#     assert(a>b)
+#     assert(b>a)
+#     print(a/b)
+
+# test(4,0)
+
+# class exam_class:
+#     def __init__(self, s):
+#         self.s = s
+    
+#     def print_fun(self):
+#         pass
+
+# a = exam_class('john')
+# a.print_fun()

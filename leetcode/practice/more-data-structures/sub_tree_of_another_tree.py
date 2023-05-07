@@ -10,13 +10,11 @@ class TreeNode(object):
 def sub_tree_of_a_tree(root1, root2):
     q = collections.deque()
     q.append(root1)
-
+    possible_sub_tree_roots = set()
     while q:
         node = q.popleft()
-        print(node.val)
-        print(root2.val)
         if node.val == root2.val:
-            break
+            possible_sub_tree_roots.add(node)
         if node.left:
             q.append(node.left)
         if node.right:
@@ -31,8 +29,10 @@ def sub_tree_of_a_tree(root1, root2):
         elif root1.val != root2.val:
             return False
         return are_trees_identical(root1.left, root2.left) and are_trees_identical(root1.right, root2.right)
-    print(node.val)
-    return are_trees_identical(node, root2)
+    for r in possible_sub_tree_roots:
+        if are_trees_identical(r, root2):
+            return True
+    return False
 
 if __name__ == "__main__":
     root1 = TreeNode(3)
@@ -42,8 +42,8 @@ if __name__ == "__main__":
     root1.left.right = TreeNode(2)
 
     root2 = TreeNode(4)
-    root1.left = TreeNode(1)
-    root1.right = TreeNode(2)
+    root2.left = TreeNode(1)
+    root2.right = TreeNode(2)
 
     print(sub_tree_of_a_tree(root1, root2))
 

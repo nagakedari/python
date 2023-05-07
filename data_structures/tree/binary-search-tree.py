@@ -23,6 +23,16 @@ class BinarySearchTree:
                 temp.right = node
         else:
             self.root = node
+    def __inrder_traversal_helper(self, root, visited):
+        if root:
+            self.__inrder_traversal_helper(root.left, visited)
+            visited.append(root.value)
+            self.__inrder_traversal_helper(root.right, visited)
+
+    def traversal(self):
+        visited = []
+        self.__inrder_traversal_helper(self.root, visited)
+        return visited
     
     def inorder_traversal(self,node):
         if node == None:
@@ -144,6 +154,42 @@ class BinarySearchTree:
             temp = None
         return self.root
 
+    def __remove_helper(self, root, val):
+        if root:
+            parent, temp = None, root
+            while temp and val != temp.value:
+                parent = temp
+                if val < parent.value:
+                    temp = temp.left
+                elif val > parent.value:
+                    temp = temp.right
+            if temp is None:
+                print(f"Node with value {val} is not found")
+                return
+            if temp.left is None or temp.right is None:
+                if temp.left is None:
+                    if temp.value < parent.value:
+                        parent.left = temp.right
+                    else:
+                        parent.right = temp.right
+                elif temp.right is None:
+                    if temp.value > parent.value:
+                        parent.right = temp.left
+                    else:
+                        parent.left = temp.left
+                temp = None
+                return
+            else:
+                new_temp = temp.right
+                while new_temp.left:
+                    new_temp = new_temp.left
+                temp.val = new_temp.value
+                self.__remove_helper(temp.right, new_temp.value)
+
+    
+    def remove(self, val):
+        self.__remove_helper(self.root, val)
+
     def hieght(self):
         return self.height_helper(self.root)
     
@@ -177,18 +223,25 @@ class BinarySearchTree:
         self.vertical_traversal_helper(node.right, hd+1, n_hd_map)
     
 tree = BinarySearchTree()
+for i in [7, 20, 5, 15, 10, 4, 33, 2, 25, 6, 30]:
+    node = Node(i)
+    tree.insert_recurr(node)
+print(tree.traversal())
+for i in [2, 15, 30, 7, 5]:
+    tree.remove(i)
+    print(tree.traversal())
 
-root = Node(7)
-node1 = Node(5)
-node2 = Node(20)
-node3 = Node(6)
-node4 = Node(15)
-node5 = Node(8)
-node6 = Node(16)
-node7 = Node(25)
-node8 = Node(3)
-node9 = Node(1)
-node10 = Node(4)
+# root = Node(7)
+# node1 = Node(5)
+# node2 = Node(20)
+# node3 = Node(6)
+# node4 = Node(15)
+# node5 = Node(8)
+# node6 = Node(16)
+# node7 = Node(25)
+# node8 = Node(3)
+# node9 = Node(1)
+# node10 = Node(4)
 
 # tree.insert(root)
 # tree.insert(node1)
@@ -202,17 +255,17 @@ node10 = Node(4)
 # tree.insert(node9)
 # tree.insert(node10)
 
-tree.insert_recurr(root)
-tree.insert_recurr(node1)
-tree.insert_recurr(node2)
-tree.insert_recurr(node3)
-tree.insert_recurr(node4)
-tree.insert_recurr(node5)
-tree.insert_recurr(node6)
-tree.insert_recurr(node7)
-tree.insert_recurr(node8)
-tree.insert_recurr(node9)
-tree.insert_recurr(node10)
+# tree.insert_recurr(root)
+# tree.insert_recurr(node1)
+# tree.insert_recurr(node2)
+# tree.insert_recurr(node3)
+# tree.insert_recurr(node4)
+# tree.insert_recurr(node5)
+# tree.insert_recurr(node6)
+# tree.insert_recurr(node7)
+# tree.insert_recurr(node8)
+# tree.insert_recurr(node9)
+# tree.insert_recurr(node10)
 
 # tree.inorder_traversal(root)
 
@@ -220,13 +273,13 @@ tree.insert_recurr(node10)
 # print('The tree has the value:{} : {}'.format(3, tree.search(3)))
 # print('The tree has the value:{} : {}'.format(17, tree.search(17)))
 # tree.insert_recurr(Node(17))
-print(tree.hieght())
+# print(tree.hieght())
 # tree.preorder_traversal(root)
 # print("\n")
 # tree.postorder_traversal(root)
 # print("\n")
 # tree.levelorder_traversal(root)
-print("\n")
+# print("\n")
 # tree.levelorder_reversal_traversal(root)
 # tree.delete(3)
-tree.vertical_traversal(root)
+# tree.vertical_traversal(root)
