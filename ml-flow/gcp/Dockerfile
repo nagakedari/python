@@ -12,7 +12,4 @@ CMD mlflow server \
     --host 0.0.0.0 \
     --port 5000 \
     --default-artifact-root ${BUCKET} \
-    --backend-store-uri mysql+pymysql://${USERNAME}:${PASSWORD}@${HOST}:${PORT_NUM}/${DATABASE}  
-
-    # --default-artifact-root gs://mlflow_tracker \
-    # --backend-store-uri mysql+pymysql://admin:adminadmin@104.154.163.107:3306/mldb 
+    --backend-store-uri mysql+pymysql://${USERNAME}:${PASSWORD}@${HOST}:${PORT_NUM}/${DATABASE}
